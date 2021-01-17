@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Backtracking.cs" />
     <Compile Include="Kruskals.cs" />
     <Compile Include="MergeSort.cs" />
     <Compile Include="MyArray.cs" />

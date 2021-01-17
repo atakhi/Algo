@@ -153,7 +153,11 @@ namespace MyDS
             //kgraph.IsCycle();
             //kgraph.IsCycleByRank();
 
-            kgraph.MST();
+            //kgraph.MST();
+
+            Backtracking bkt = new Backtracking();
+            bkt.SubsetsOfN(3);
+            bkt.PermutationsOfN(123);
 
             Console.WriteLine();
             Console.ReadKey();

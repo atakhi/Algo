@@ -156,8 +156,12 @@ namespace MyDS
             //kgraph.MST();
 
             Backtracking bkt = new Backtracking();
-            bkt.SubsetsOfN(3);
-            bkt.PermutationsOfN(123);
+            //bkt.SubsetsOfN(3);
+            //bkt.PermutationsOfN(123);
+
+            PatternSearching ps = new PatternSearching();
+
+            ps.NaivePatternSearch("AABAACAADAABAAABAA", "AABA");
 
             Console.WriteLine();
             Console.ReadKey();

@@ -121,6 +121,53 @@ namespace MyDS
             Console.WriteLine();
         }
 
+        public void PermutationsOfS(string s) {
+            char[] a = new char[s.Length + 1];
+            BackTrackPermOfS(a, 0, s);
+        }
+        private void BackTrackPermOfS(char[] a, int k, string s) {
+            char[] c = new char[s.Length + 1];
+            int ncan;
+            int i;
+            if (k==s.Length){
+                ProcessPermSolutionS(a, k, s);
+            }
+            else
+            {
+                k = k + 1;
+                ConstructCandidatesPermS(a, k, s, c, out ncan);
+                for (i = 0; i < ncan; i++) {
+                    a[k] = c[i];
+                    BackTrackPermOfS(a, k, s);
+                    if (finished)
+                        return;
+                }
+            }
+        }
+        private void ConstructCandidatesPermS(char[] a, int k, string s, char[] c, out int nc) {
+            nc = 0;
+            bool[] inPerm = new bool[s.Length + 1];
+            Dictionary<char, bool> d = new Dictionary<char, bool>();
+            for (int i = 0; i < k; i++) {
+                if (!d.ContainsKey(a[i])) {
+                    d.Add(a[i], true);
+                }
+            }
+            for (int i = 0; i < s.Length; i++) {
+                if (!d.ContainsKey(s[i])) {
+                    c[nc] = s[i];
+                    nc++;
+                }
+            }
+        }
+
+        private void ProcessPermSolutionS(char[] a, int k, string s) {
+            for (int i = 1; i <= k; i++)
+            {
+                Console.Write(a[i]);
+            }
+            Console.WriteLine();
+        }
 
         public void LexicographicallySortVowelsOfN(int n) {
             //a [n+1]  c[n+1]

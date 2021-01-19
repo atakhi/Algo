@@ -165,7 +165,7 @@ namespace MyDS
 
             //ps.NaivePatternSearch("AABAACAADAABAAABAA", "AABA");
 
-            ps.KMPSearch("AABAACAADAABAAABAA", "AABA");
+            ps.KMPSearch("ABABDABACDABABCABAB", "ABABCABAB");
 
             Console.WriteLine();
             Console.ReadKey();

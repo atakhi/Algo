@@ -60,6 +60,7 @@ namespace MyDS
             lps[0] = 0;
             //ababd lps[1] = 0, lps[2]=1, lps[3]=2, lps[4]=0
             //aaba lps[1]=1 lps[2]=0 lps[3]=1
+            //ABABCABAB lps1=0 lps2=1 lps3=2 lps4=0 lps5=1 lps6=2 lps7=3 lps8=4
             while (i < m) {
                 if (pattern[j] == pattern[i]) {
                     j++;

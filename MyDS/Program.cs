@@ -159,11 +159,13 @@ namespace MyDS
             //bkt.SubsetsOfN(3);
             //bkt.PermutationsOfN(123);
 
-            bkt.PermutationsOfS("abc");
+            //bkt.PermutationsOfS("abc");
 
             PatternSearching ps = new PatternSearching();
 
             //ps.NaivePatternSearch("AABAACAADAABAAABAA", "AABA");
+
+            ps.KMPSearch("AABAACAADAABAAABAA", "AABA");
 
             Console.WriteLine();
             Console.ReadKey();

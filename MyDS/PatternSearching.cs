@@ -27,7 +27,7 @@ namespace MyDS
             int n = text.Length;
             int m = pattern.Length;
 
-            //prepare LPS table to find repeating groups in pattern - PREPROCESS pattern
+            //prepare LPS table to find same prefix and suffix in pattern - PREPROCESS pattern
             int[] lps = new int[m];
             int j = 0;
             ComputeLPSArray(lps, m, pattern);
@@ -79,6 +79,48 @@ namespace MyDS
                     }
                 }
             }
+        }
+
+        public void RabinKarp(string text, string pat) {
+            int n = text.Length;
+            int m = pat.Length;
+            text = text.ToLower();
+            pat = pat.ToLower();
+
+            int hashCodePat = GetHashValue(pat);
+
+            for (int i = 0; i <= n - m; i++) {
+                string curr = text.Substring(i, m);
+                int currHashCode = GetHashValue(curr);
+                int j = 0;
+                if (hashCodePat == currHashCode) {
+                    for (j=0;j<pat.Length;j++) {
+                        if (curr[j] != pat[j])
+                            break;
+                    }
+                    if (j == m) {
+                        Console.WriteLine("pattern found at " + i);
+                    }
+
+                }
+            }
+        }
+        private int GetHashValue(string pat) {
+            //chars allowed a-z = 26 % 2^31
+            //dba
+            int h = 0;
+
+            char[] arr = pat.ToCharArray();
+            int j = 0;
+            double hv = 0.0;
+            for (int i = arr.Length - 1; i >= 0; i--)
+            {
+                hv += arr[i] * Math.Pow(26,j);
+                j++;
+            }
+            h = (int)(hv % Math.Pow(2, 31));
+
+            return h;
         }
     }
 }

@@ -163,9 +163,11 @@ namespace MyDS
 
             PatternSearching ps = new PatternSearching();
 
-            //ps.NaivePatternSearch("AABAACAADAABAAABAA", "AABA");
+            ps.NaivePatternSearch("AABAACAADAABAAABAA", "AABA");
 
-            ps.KMPSearch("ABABDABACDABABCABAB", "ABABCABAB");
+            //ps.KMPSearch("ABABDABACDABABCABAB", "ABABCABAB");
+
+            ps.RabinKarp("AABAACAADAABAAABAA", "AABA");
 
             Console.WriteLine();
             Console.ReadKey();

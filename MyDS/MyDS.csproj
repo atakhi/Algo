@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Backtracking.cs" />
+    <Compile Include="Fibonacci.cs" />
     <Compile Include="Kruskals.cs" />
     <Compile Include="MergeSort.cs" />
     <Compile Include="MyArray.cs" />

@@ -6,20 +6,26 @@ using System.Threading.Tasks;
 
 namespace MyDS
 {
-    public class MyMaxHeap
+    public class MyMaxHeap<T> where T : IComparable<T>
     {
-        public int[] heap;
-        public int len;
+        private List<T> heap;
+        private int len;
+        private IComparer<T> _heapComparer = Comparer<T>.Default;
 
         public MyMaxHeap()
         {
-            heap = new int[5];
+            heap = new List<T>();
+        }
+        public MyMaxHeap(int cap, IComparer<T> comparer)
+        {
+            heap = new List<T>(cap);
+            _heapComparer = comparer ?? Comparer<T>.Default;
         }
 
-        public void Insert(int data)
+        public void Insert(T data)
         {
             int i = len;
-            heap[len] = data;
+            heap.Add(data);
             len++;
             CheckParents(i);
 
@@ -27,48 +33,48 @@ namespace MyDS
         private void CheckParents(int i)
         {
             
-            while(i != 0 && heap[i] > heap[GetParent(i)])
+            while(i != 0 && _heapComparer.Compare( heap[i], heap[GetParent(i)]) > 0)
             {
                 Swap(i, GetParent(i));
                 i = GetParent(i);
             }
         }
-        public void Swap(int l, int r)
+        private void Swap(int l, int r)
         {
-            int temp = heap[l];
+            T temp = heap[l];
             heap[l] = heap[r];
             heap[r] = temp;
         }
-        public int GetParent(int i)
+        private int GetParent(int i)
         {
             return (i - 1) / 2;
         }
-        public int RightChild(int i)
+        private int RightChild(int i)
         {
             return (2 * i) + 2;
         }
-        public int LeftChild(int i)
+        private int LeftChild(int i)
         {
             return (2 * i) + 1;
         }
         public void Delete()
         {
-            int item = heap[0];
+            T item = heap[0];
             int i = 0;
             heap[i] = heap[len - 1];
             len--;
             CheckDescendants(len, i);
         }
-        public void CheckDescendants(int n, int i)
+        private void CheckDescendants(int n, int i)
         {
             int largest = i;
             int left = LeftChild(i);
             int right = RightChild(i);
-            if (left < n && heap[largest] < heap[left])
+            if (left < n && _heapComparer.Compare(heap[largest], heap[left])<0)
             {
                 largest = left;
             }
-            if (right < n && heap[largest] < heap[right])
+            if (right < n && _heapComparer.Compare(heap[largest], heap[right])<0)
             {
                 largest = right;
             }
@@ -86,7 +92,7 @@ namespace MyDS
             }
             Console.WriteLine();
         }
-        public void Sort(int[] arr)
+        public void Sort(T[] arr)
         {
             int n = arr.Length;
             for(int i= n / 2 - 1; i >= 0; i--)
@@ -97,7 +103,7 @@ namespace MyDS
             for (int i = n - 1; i > 0; i--)
             {
                 // Move current root to end
-                int temp = arr[0];
+                T temp = arr[0];
                 arr[0] = arr[i];
                 arr[i] = temp;
 
@@ -105,23 +111,31 @@ namespace MyDS
                 heapify(arr, i, 0);
             }
         }
-        public void heapify(int[] arr, int n, int i)
+        public void heapify(T[] arr, int n, int i)
         {
             int largest = i;
             int l = LeftChild(i);
             int r = RightChild(i);
 
-            if (l < n && arr[l] > arr[largest])
+            if (l < n && _heapComparer.Compare(arr[l], arr[largest]) > 0)
                 largest = l;
-            if (r < n && arr[r] > arr[largest])
+            if (r < n && _heapComparer.Compare(arr[r], arr[largest]) > 0)
                 largest = r;
             if (largest != i)
             {
-                int temp = arr[i];
+                T temp = arr[i];
                 arr[i] = arr[largest];
                 arr[largest] = temp;
                 heapify(arr, n, largest);
             }
+        }
+
+    }
+    public class MyIntComparer : IComparer<int>
+    {
+        public int Compare(int x, int y)
+        {
+            return x - y;
         }
     }
 }

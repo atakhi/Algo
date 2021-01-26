@@ -176,7 +176,11 @@ namespace MyDS
 
             //f.FibDP(55);
 
-            f.BinomialCoefficients(5, 2);
+            //f.BinomialCoefficients(5, 2);
+
+            EditDistance ed = new EditDistance();
+            //ed.EditDistanceRecursive("sunday", "saturday");
+            ed.EditDistanceDP("sunday", "saturday");
 
             Console.WriteLine();
             Console.ReadKey();

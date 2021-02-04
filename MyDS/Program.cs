@@ -63,17 +63,18 @@ namespace MyDS
             bst.Delete(50);
             //bst.InorderTraverse();
 
-            MyMaxHeap heap = new MyMaxHeap();
-            //heap.Insert(10);
-            //heap.Insert(5);
-            //heap.Insert(3);
-            //heap.Insert(2);
-            //heap.Insert(4);
+            MyMaxHeap<int> heap = new MyMaxHeap<int>(5,new MyIntComparer());
+            heap.Insert(10);
+            heap.Insert(5);
+            heap.Insert(3);
+            heap.Insert(2);
+            heap.Insert(4);
+            heap.Insert(14);
             //heap.Print();
             //heap.Delete();
             //heap.Print();
-            int[] arr = { 4, 2, 1, 3, 7, 5, 8 ,6};
-            heap.Sort(arr);
+            //int[] arr = { 4, 2, 1, 3, 7, 5, 8 ,6};
+            //heap.Sort(arr);
             //heap.Print();
 
             MergeSort ms = new MergeSort();
@@ -153,7 +154,33 @@ namespace MyDS
             //kgraph.IsCycle();
             //kgraph.IsCycleByRank();
 
-            kgraph.MST();
+            //kgraph.MST();
+
+            Backtracking bkt = new Backtracking();
+            //bkt.SubsetsOfN(3);
+            //bkt.PermutationsOfN(123);
+
+            //bkt.PermutationsOfS("abc");
+
+            PatternSearching ps = new PatternSearching();
+
+            //ps.NaivePatternSearch("AABAACAADAABAAABAA", "AABA");
+
+            //ps.KMPSearch("ABABDABACDABABCABAB", "ABABCABAB");
+
+            //ps.RabinKarp("AABAACAADAABAAABAA", "AABA");
+
+            Fibonacci f = new Fibonacci();
+            //f.Recrusive(5);
+            //f.RecursiveMemoization(55);
+
+            //f.FibDP(55);
+
+            //f.BinomialCoefficients(5, 2);
+
+            EditDistance ed = new EditDistance();
+            //ed.EditDistanceRecursive("sunday", "saturday");
+            ed.EditDistanceDP("sunday", "saturday");
 
             Console.WriteLine();
             Console.ReadKey();

@@ -43,6 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Backtracking.cs" />
+    <Compile Include="EditDistance.cs" />
+    <Compile Include="Fibonacci.cs" />
     <Compile Include="Kruskals.cs" />
     <Compile Include="MergeSort.cs" />
     <Compile Include="MyArray.cs" />
@@ -53,6 +56,7 @@
     <Compile Include="MyLinkedList.cs" />
     <Compile Include="MyMaxHeap.cs" />
     <Compile Include="MyWGraph.cs" />
+    <Compile Include="PatternSearching.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuickSort.cs" />

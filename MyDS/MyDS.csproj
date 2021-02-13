@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Backtracking.cs" />
+    <Compile Include="BFSInMatrix.cs" />
     <Compile Include="EditDistance.cs" />
     <Compile Include="Fibonacci.cs" />
     <Compile Include="Kruskals.cs" />
